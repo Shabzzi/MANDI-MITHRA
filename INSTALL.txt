@@ -1,0 +1,26 @@
+MANDIMITRA CHATBOT PATCH (ONLY THE CHATBOT-RELATED FILES)
+
+1) Replace this file in your existing project:
+   src/components/FarmerChatbot.jsx
+   with the same file from this package.
+
+2) Replace the project-root server.js with the server.js from this package.
+   This keeps the existing API routes and changes the invalid model IDs used by
+   the advisor/chat/voice-note routes to gemini-2.5-flash.
+
+3) Keep your existing .env in the project root. It should contain:
+   GEMINI_API_KEY=your_real_key
+   Do not share the key or commit the .env file.
+
+4) In the VS Code terminal, stop the running server with Ctrl+C, then run:
+   npm.cmd run dev
+
+5) Refresh http://localhost:3000 and test the chatbot with a short Kannada text
+   question first, then press the speaker button on the reply.
+
+VOICE NOTE:
+- Browser/device speech voices vary. The component attempts Kannada (kn-IN)
+  speech if the device has a Kannada voice installed. It cannot install a voice.
+- The voice-note transcription route uses Gemini multimodal audio input; if the
+  selected model/account does not accept the audio format, the UI will show the
+  server error. Text chat should be tested separately first.
